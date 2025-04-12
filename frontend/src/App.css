@@ -1,0 +1,38 @@
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.badge {
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: none;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-switch .custom-control-label::before {
+    height: 1.5rem;
+    width: 2.75rem;
+    border-radius: 1rem;
+}
+
+.footer {
+    border-top: 1px solid #dee2e6;
+}

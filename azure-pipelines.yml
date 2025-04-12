@@ -1,0 +1,39 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'frontend'
+  displayName: 'npm install'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'frontend'
+    customCommand: 'run test:ci'
+  displayName: 'Run Tests'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/junit.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/frontend/coverage'
+    testRunTitle: 'Frontend Tests'
+  displayName: 'Publish Test Results'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/frontend/coverage/cobertura-coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/frontend/coverage'
+  displayName: 'Publish Code Coverage'
